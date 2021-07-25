@@ -1,12 +1,8 @@
-const puppeteer = require('puppeteer');
+const makePDF = require('./makepdf.js');
+const takeScreenshot = require('./takescreenshot.js');
+
 const url = 'https://google.com';
-const imgFileName = 'google';
+const fileName = 'google';
 
-(async () => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.goto(url, {waitUntil: 'networkidle2'});
-  await page.screenshot({ path: `img/${imgFileName}.png` });
-
-  await browser.close();
-})();
+makePDF(url, fileName);
+takeScreenshot(url, fileName);
